@@ -1,24 +1,42 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ICreateUpdateMovie } from '../interface/i-create-update-movie';
 
-@Injectable({
-  providedIn: 'root'
-})
-class MovieService {
+@Injectable()
+export class MovieService {
+  private BASE_URL = 'http://localhost:3000/api/movies';
 
-  constructor(private http: HttpClient) { }
+  private createMovieURL = this.BASE_URL + '/create';
+  private readAllMoviesURL = this.BASE_URL + '/readAll';
+  private updateMovieURL = this.BASE_URL + '/update';
+  private deleteMovieURL = this.BASE_URL + '/delete/';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
+  constructor(private httpClient: HttpClient) { }
 
-  /**
-  * Get the information from MongoDB Documents
-  *
-  * @returns Observable with detailed information
-  */
-  getDetails(id: string) {
-    // TODO connect to MongoDB
+  readAllMovies() {
+    return this.httpClient.get(this.readAllMoviesURL, this.httpOptions);
+  }
+
+  createUpdateMovie(movieDetails: ICreateUpdateMovie) {
+    if (movieDetails._id === '' || movieDetails._id === undefined) {
+      delete movieDetails._id;
+      return this.httpClient.post(
+        this.createMovieURL,
+        movieDetails,
+        this.httpOptions
+      );
+    }
+    return this.httpClient.post(
+      this.updateMovieURL,
+      movieDetails,
+      this.httpOptions
+    );
+  }
+
+  deleteMovie(id: string) {
+    return this.httpClient.delete(this.deleteMovieURL + id, this.httpOptions);
   }
 }
-
-export default MovieService;

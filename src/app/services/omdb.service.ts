@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IOmdbResponse } from './../interface/i-omdb-response';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,9 @@ class OmdbService {
   * @param {string} title Search Term
   * @returns Observable with the search results
   */
-  searchData(title: string): Observable<any> {
+  searchData(title: string): Observable<IOmdbResponse> {
     return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${this.type}&apikey=${this.apiKey}`).pipe(
-      map(results => results['Search'])
+      map(results => results as IOmdbResponse)
     );
   }
 
