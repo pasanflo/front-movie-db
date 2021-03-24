@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ICreateUpdateMovie } from '../interface/i-create-update-movie';
+import { ICreateUpdateMovie } from '../interfaces/i-create-update-movie';
 
 @Injectable()
 export class MovieService {
