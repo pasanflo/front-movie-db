@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IOmdbResponse } from './../interface/i-omdb-response';
+import { IOmdbResponse } from '../interfaces/i-omdb-response';
 
 @Injectable({
   providedIn: 'root'
