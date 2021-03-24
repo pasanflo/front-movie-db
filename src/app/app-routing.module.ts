@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'movies', pathMatch: 'full' },
   {
-    path: 'gatos', loadChildren: () =>
+    path: 'movies', loadChildren: () =>
       import('./movies/movies.module').then(
         m => m.MoviesModule)
   },
