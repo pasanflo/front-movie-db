@@ -10,6 +10,9 @@ import { MovieService } from '../services/movie.service';
   declarations: [
     MoviesComponent,
   ],
+  providers: [
+    MovieService
+  ],
   imports: [
     CommonModule,
     MoviesRoutingModule
