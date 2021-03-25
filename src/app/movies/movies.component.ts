@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../services/movie.service';
+import OmdbService from '../services/omdb.service';
 
 @Component({
   selector: 'app-movies',
@@ -8,14 +8,25 @@ import { MovieService } from '../services/movie.service';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: any;
+  searchText = "Toy Story"
+  movies = [];
 
-  constructor(private movieService: MovieService) {
-
-  }
+  constructor(
+    private omdbService: OmdbService
+  ) { }
 
   ngOnInit(): void {
-    this.movies = this.movieService.readAllMovies();
+    this.omdbService.searchData(this.searchText).subscribe((movies) => {
+      this.movies = movies["Search"];
+      console.log(this.movies);
+    });
   }
 
+  getFavouriteMovies() {
+
+  }
+
+  ngOnDestroy(): void {
+
+  }
 }

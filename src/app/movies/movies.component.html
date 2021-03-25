@@ -22,9 +22,9 @@
     <!-- MAIN CONTAINER -->
     <section class="main-container" >
       <div class="location" id="home">
-          <h1 id="home">Películas de Batman</h1>
-          <div class="box" *ngFor="let m of movies">
-            <a href=""><img {src}="m.url" alt=""></a>
+          <h1 id="home">Películas de {{searchText}}</h1>
+          <div class="box">
+              <a *ngFor="let movie of movies" [routerLink]="['/movie-details', movie['imdbID']]"><img *ngIf="movie['Poster'] !== 'N/A'" src="{{movie['Poster']}}" alt="{{movie['Title']}}"></a>
           </div>
       </div>
 
