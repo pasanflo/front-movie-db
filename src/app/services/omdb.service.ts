@@ -24,7 +24,7 @@ class OmdbService {
   * @param {string} title Search Term
   * @returns Observable with the search results
   */
-  searchData(title: string): Observable<IOmdbResponse> {
+  searchData(title: string): Observable<any> {
     return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${this.type}&apikey=${this.apiKey}`).pipe(
       map(results => results as IOmdbResponse)
     );

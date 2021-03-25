@@ -4,7 +4,7 @@ import { ICreateUpdateMovie } from '../interfaces/i-create-update-movie';
 
 @Injectable()
 export class MovieService {
-  private BASE_URL = 'http://localhost:3000/api/movies';
+  private BASE_URL = 'http://localhost:3000/api/movies/v0/movies';
 
   private createMovieURL = this.BASE_URL + '/create';
   private readAllMoviesURL = this.BASE_URL + '/readAll';
