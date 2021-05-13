@@ -9,4 +9,6 @@ Please refer to `https://github.com/pasanflo/movie-backend` to clone the backend
 
 ## Development server
 
+First, do `npm install` for installing dependencies
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
